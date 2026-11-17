@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sajal Rathore — Personal Resume</title>
+    <meta
+      name="description"
+      content="Personal resume website for Sajal Rathore, BBA (Digital Business and Entrepreneurship) student at IIM Bangalore."
+    />
+    <meta property="og:title" content="Sajal Rathore — Personal Resume" />
+    <meta
+      property="og:description"
+      content="Personal resume website for Sajal Rathore, BBA (Digital Business and Entrepreneurship) student at IIM Bangalore."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Prevent theme flash before stylesheet paints -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('sr-theme');
+          var dark =
+            saved === 'dark' ||
+            (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Editorial Serif Display (EB Garamond) + Clean Humanist Sans (Figtree) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- =======================================================================
+         GLOBAL NAVIGATION BAR
+         ======================================================================= -->
+    <header class="site-header">
+      <div class="container header-shell">
+        <a href="#hero" class="nav-brand">Sajal Rathore</a>
+
+        <!-- CSS-only mobile menu toggle -->
+        <input
+          type="checkbox"
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation menu"
+        />
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#beyond-class">Beyond Class</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            type="button"
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-icon theme-icon-sun"
+              viewBox="0 0 24 24"
+              width="15"
+              height="15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke-linecap="round"
+              />
+            </svg>
+            <svg
+              class="theme-icon theme-icon-moon"
+              viewBox="0 0 24 24"
+              width="15"
+              height="15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="theme-toggle-text">Dark</span>
+          </button>
+
+          <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Pure CSS Scroll Progress Indicator -->
+      <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <!-- =====================================================================
+           1. HERO / WHO AM I
+           ===================================================================== -->
+      <section id="hero" class="section-surface">
+        <div class="container hero-layout">
+          <div class="hero-content">
+            <p class="hero-kicker">IIM Bangalore &middot; BBA (DBE) &rsquo;29</p>
+            <h1 class="hero-title">Sajal <em>Rathore.</em></h1>
+            <p class="hero-lead">
+              Digital business undergraduate at IIM Bangalore combining over ten years inside a
+              family trade enterprise with state-level athletics and visual production.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">Get in Touch</a>
+              <a href="#education" class="btn btn-secondary">Explore Background</a>
+            </div>
+          </div>
+
+          <div class="hero-bento" aria-label="Profile highlights">
+            <article class="bento-tile">
+              <p class="bento-eyebrow">Commerce Roots</p>
+              <h2 class="bento-heading">10+ years in real trade</h2>
+              <p class="bento-copy">
+                Raised inside a family sack and plastic packaging business&mdash;learning inventory
+                flow, supplier reliability, and repeat buyer trust first-hand.
+              </p>
+            </article>
+
+            <article class="bento-tile">
+              <p class="bento-eyebrow">Education</p>
+              <h2 class="bento-heading">IIM Bangalore</h2>
+              <p class="bento-copy">
+                Pursuing BBA in Digital Business and Entrepreneurship (2026&ndash;2029), following
+                85% in Class 12 Commerce with Maths and 88% in Class 10.
+              </p>
+            </article>
+
+            <article class="bento-tile">
+              <p class="bento-eyebrow">Sport &amp; Visual Craft</p>
+              <h2 class="bento-heading">Discipline &amp; motion</h2>
+              <p class="bento-copy">
+                State-level football composure paired with beat-synced video editing, animated music
+                videos, and Adobe Photoshop production.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           2. EDUCATION
+           ===================================================================== -->
+      <section id="education" class="section-obsidian">
+        <div class="container">
+          <div class="section-header section-header-dark">
+            <p class="section-kicker section-kicker-dark">01 &middot; EDUCATION</p>
+            <h2 class="section-title">
+              Twelve years of <em>foundation,</em> built toward digital ventures.
+            </h2>
+          </div>
+
+          <div class="education-layout">
+            <aside class="education-summary">
+              <div class="edu-panel">
+                <p class="panel-eyebrow">Current Programme</p>
+                <h3 class="education-summary-title">BBA DBE &middot; 2026&ndash;2029</h3>
+                <p class="education-summary-copy">
+                  Indian Institute of Management (IIM) Bangalore undergraduate cohort focused on
+                  digital-first business models, analytics, and entrepreneurship.
+                </p>
+              </div>
+
+              <div class="summary-board-row">
+                <div class="board-stat">
+                  <span class="board-value">85%</span>
+                  <span class="board-name">Class 12 Commerce &amp; Maths</span>
+                </div>
+                <div class="board-stat">
+                  <span class="board-value">88%</span>
+                  <span class="board-name">Class 10 Secondary Board</span>
+                </div>
+              </div>
+            </aside>
+
+            <div class="timeline">
+              <article class="timeline-item">
+                <span class="timeline-dot timeline-dot-current" aria-hidden="true"></span>
+                <h3 class="timeline-heading">Indian Institute of Management (IIM) Bangalore</h3>
+                <p class="timeline-subtitle">
+                  BBA in Digital Business and Entrepreneurship (DBE) &middot; 2026&ndash;2029 (Pursuing)
+                </p>
+                <p class="timeline-desc">
+                  Pursuing an undergraduate degree focused on digital-first business models,
+                  entrepreneurial execution, quantitative decision-making, and venture strategy.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <h3 class="timeline-heading">Dr Virendra Swarup Education Centre</h3>
+                <p class="timeline-subtitle">Class 12, Commerce with Mathematics &middot; 85%</p>
+                <p class="timeline-desc">
+                  Built core analytical and financial grounding across Accountancy, Business
+                  Studies, Economics, and Mathematics.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <h3 class="timeline-heading">Dr Virendra Swarup Education Centre</h3>
+                <p class="timeline-subtitle">Class 10, Secondary Board &middot; 88%</p>
+                <p class="timeline-desc">
+                  Completed secondary schooling with consistent academic performance alongside
+                  competitive state-level sport.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <h3 class="timeline-heading">Dr Virendra Swarup Education Centre</h3>
+                <p class="timeline-subtitle">Complete Schooling &middot; KG to Class 12</p>
+                <p class="timeline-desc">
+                  Completed twelve continuous years of schooling at the same institution,
+                  building steady habits across academics and competitive athletics.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           3. EXPERIENCE
+           ===================================================================== -->
+      <section id="experience" class="section-surface">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-kicker">02 &middot; EXPERIENCE</p>
+            <h2 class="section-title">
+              Practical judgement learned inside a <em>ten-year</em> family enterprise.
+            </h2>
+          </div>
+
+          <article class="experience-layout">
+            <div class="experience-rail">
+              <div class="rail-item rail-item-active">
+                <h3 class="rail-title">Family Sack &amp; Plastic Business</h3>
+                <p class="rail-copy">Operations &amp; Digital Presence Support &middot; 10+ Years Operating</p>
+              </div>
+              <div class="rail-item">
+                <p class="rail-label">Daily Execution</p>
+                <p class="rail-copy">Stock movement, supplier coordination, and order dispatch.</p>
+              </div>
+              <div class="rail-item">
+                <p class="rail-label">Digital Reach</p>
+                <p class="rail-copy">Clearer product visibility and simpler digital buyer inquiries.</p>
+              </div>
+            </div>
+
+            <div class="experience-window">
+              <div class="window-header">
+                <span class="window-title">Operations &amp; Digital Growth Brief</span>
+                <span class="window-meta">Family Enterprise &middot; Active</span>
+              </div>
+
+              <ul class="experience-list">
+                <li>
+                  Supported daily business operations, seeing first-hand how stock movement,
+                  supplier coordination, and order dispatch keep a steady trade running.
+                </li>
+                <li>
+                  Helped strengthen the business&rsquo;s online presence so buyers could find our
+                  products and reach out more easily through digital channels.
+                </li>
+                <li>
+                  Observed and assisted with routine customer handling, learning how clear
+                  communication and timely delivery build repeat trade.
+                </li>
+                <li>
+                  Brought simple digital workflows into everyday record-keeping and product
+                  presentation while respecting how the core business operates.
+                </li>
+              </ul>
+
+              <div class="experience-takeaway">
+                <p>
+                  <strong>What this taught me:</strong> A business survives for over ten years
+                  through reliability, not noise&mdash;keeping word on delivery, watching small
+                  details, and adapting without losing customer trust.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           4. BEYOND CLASS
+           ===================================================================== -->
+      <section id="beyond-class" class="section-alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-kicker">03 &middot; BEYOND CLASS</p>
+            <h2 class="section-title">
+              Composure on the pitch. <em>Precision</em> in the edit.
+            </h2>
+          </div>
+
+          <div class="beyond-stack">
+            <article class="beyond-row">
+              <div class="beyond-visual-card">
+                <div class="editorial-specimen">
+                  <p class="specimen-meta">Composure &middot; Team Read &middot; Consistency</p>
+                  <blockquote class="specimen-quote">
+                    &ldquo;Read the game early, back teammates under pressure, and show up to
+                    training even after a tough result.&rdquo;
+                  </blockquote>
+                  <p class="specimen-caption">State-Level Competitive Football</p>
+                </div>
+              </div>
+
+              <div class="beyond-copy">
+                <h3 class="pillar-title">State-Level Football</h3>
+                <p class="pillar-text">
+                  Playing football at the state level taught me how to read a game in real time,
+                  trust teammates under pressure, and stay consistent in training even after a
+                  tough loss. Sport strips away excuses quickly&mdash;you either put in the work or
+                  it shows on the field.
+                </p>
+              </div>
+            </article>
+
+            <article class="beyond-row beyond-row-reverse">
+              <div class="beyond-visual-card">
+                <div class="cue-sheet" aria-label="Post-production craft disciplines">
+                  <div class="cue-row">
+                    <span class="cue-title">Audio Beat Sync</span>
+                    <span class="cue-detail">Rhythm lock &amp; transient cuts</span>
+                  </div>
+                  <div class="cue-row">
+                    <span class="cue-title">Motion Sequencing</span>
+                    <span class="cue-detail">Layered transitions &amp; frame pacing</span>
+                  </div>
+                  <div class="cue-row">
+                    <span class="cue-title">Photoshop Compositing</span>
+                    <span class="cue-detail">Retouching, type &amp; tonal balance</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="beyond-copy">
+                <h3 class="pillar-title">Video Editing &amp; Animated Music Videos</h3>
+                <p class="pillar-text">
+                  When I am off the pitch, video editing and animated music videos are my creative
+                  outlet. Syncing cuts to rhythm, layering motion, and refining frames until a
+                  sequence feels right trains my eye for pacing, visual clarity, and attention to
+                  detail.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           5. SKILLS
+           ===================================================================== -->
+      <section id="skills" class="section-surface">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-kicker">04 &middot; SKILLS</p>
+            <h2 class="section-title">
+              Commercial judgement paired with <em>visual craft.</em>
+            </h2>
+          </div>
+
+          <div class="skills-grid">
+            <article class="card skill-card">
+              <p class="card-eyebrow">Creative Production</p>
+              <h3 class="card-heading">Visual &amp; Motion</h3>
+              <p class="card-subtext">
+                Visual storytelling built through timing, composition, and hands-on editing.
+              </p>
+
+              <ul class="skill-list">
+                <li class="skill-row">
+                  <h4 class="skill-name">Video Editing</h4>
+                  <p class="skill-desc">
+                    Cutting raw footage into clean, engaging edits with deliberate pacing and
+                    audio-visual flow.
+                  </p>
+                </li>
+                <li class="skill-row">
+                  <h4 class="skill-name">Animated Music Videos</h4>
+                  <p class="skill-desc">
+                    Designing motion sequences and visual transitions timed closely to music
+                    rhythm and mood.
+                  </p>
+                </li>
+                <li class="skill-row">
+                  <h4 class="skill-name">Photoshop Editing</h4>
+                  <p class="skill-desc">
+                    Composing graphics, retouching visuals, and preparing crisp digital assets for
+                    presentations and online channels.
+                  </p>
+                </li>
+              </ul>
+            </article>
+
+            <article class="card skill-card">
+              <p class="card-eyebrow">Commerce &amp; Teams</p>
+              <h3 class="card-heading">Business &amp; Leadership</h3>
+              <p class="card-subtext">
+                Practical habits shaped inside a family enterprise and refined through study.
+              </p>
+
+              <ul class="skill-list">
+                <li class="skill-row">
+                  <h4 class="skill-name">Business Acumen</h4>
+                  <p class="skill-desc">
+                    Grounded sense of how customer trust, day-to-day execution, and market
+                    consistency keep a business healthy.
+                  </p>
+                </li>
+                <li class="skill-row">
+                  <h4 class="skill-name">Leadership</h4>
+                  <p class="skill-desc">
+                    Stepping up to align people, stay calm in tense moments, and take ownership on
+                    the pitch and in group work.
+                  </p>
+                </li>
+                <li class="skill-row">
+                  <h4 class="skill-name">Managerial Skills</h4>
+                  <p class="skill-desc">
+                    Coordinating tasks, organising workflows, and following responsibilities
+                    through to completion.
+                  </p>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           6. ACHIEVEMENTS
+           ===================================================================== -->
+      <section id="achievements" class="section-obsidian">
+        <div class="container">
+          <div class="section-header section-header-dark">
+            <p class="section-kicker section-kicker-dark">05 &middot; ACHIEVEMENTS</p>
+            <h2 class="section-title">
+              Academic, athletic &amp; <em>community milestones.</em>
+            </h2>
+          </div>
+
+          <div class="achievements-grid">
+            <article class="achievement-item achievement-featured">
+              <p class="achievement-category">IIM Bangalore</p>
+              <h3 class="achievement-title">Admission to IIM Bangalore (BBA DBE)</h3>
+              <p class="achievement-desc">
+                Earned admission to the BBA in Digital Business and Entrepreneurship programme at
+                IIM Bangalore for the 2026&ndash;2029 batch.
+              </p>
+              <p class="achievement-stat">2026&ndash;2029</p>
+            </article>
+
+            <article class="achievement-item">
+              <p class="achievement-category">Athletics</p>
+              <h3 class="achievement-title">State-Level Football Player</h3>
+              <p class="achievement-desc">
+                Represented at the state level in competitive football while balancing full-time
+                school academics.
+              </p>
+              <p class="achievement-note">Competitive State Representation</p>
+            </article>
+
+            <article class="achievement-item">
+              <p class="achievement-category">Community</p>
+              <h3 class="achievement-title">Volunteering with HelpAge India</h3>
+              <p class="achievement-desc">
+                Volunteered for senior citizen welfare under the HelpAge India scheme and helped
+                raise money from society to support better facilities for the elderly.
+              </p>
+              <p class="achievement-note">Senior Citizen Welfare &amp; Fundraising</p>
+            </article>
+
+            <article class="achievement-item">
+              <p class="achievement-category">Academics</p>
+              <h3 class="achievement-title">Board Examination Consistency</h3>
+              <p class="achievement-desc">
+                Secured 88% in Class 10 and 85% in Class 12 (Commerce with Mathematics) at Dr
+                Virendra Swarup Education Centre.
+              </p>
+              <p class="achievement-stat">88% &middot; 85%</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           7. CONTACT
+           ===================================================================== -->
+      <section id="contact" class="section-alt">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-kicker">06 &middot; CONTACT</p>
+            <h2 class="section-title">
+              Open to internships, ventures &amp; <em>collaborations.</em>
+            </h2>
+          </div>
+
+          <div class="contact-shell">
+            <div class="contact-info-panel">
+              <div class="contact-info-head">
+                <h3 class="panel-heading">Direct Channels</h3>
+                <p class="contact-lead">
+                  Reach out directly by email or phone, or download my CV for academic and project
+                  opportunities.
+                </p>
+              </div>
+
+              <ul class="contact-details">
+                <li class="contact-row">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="M3 7l9 6 9-6" />
+                    </svg>
+                  </span>
+                  <div class="contact-text">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:rathoresajal047@gmail.com">rathoresajal047@gmail.com</a>
+                  </div>
+                </li>
+
+                <li class="contact-row">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </span>
+                  <div class="contact-text">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+919555151912">9555151912</a>
+                  </div>
+                </li>
+
+                <li class="contact-row">
+                  <span class="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <path d="M14 2v6h6M8 13h8M8 17h5" />
+                    </svg>
+                  </span>
+                  <div class="contact-text">
+                    <span class="contact-label">Curriculum Vitae</span>
+                    <!-- REPLACE: link to your uploaded resume PDF file (e.g. "Sajal-Rathore-Resume.pdf") -->
+                    <a href="#contact" id="resume-print-link">Save / Print Resume (PDF)</a>
+                  </div>
+                </li>
+              </ul>
+
+              <p class="contact-panel-note">
+                Available for undergraduate internships, digital commerce projects, and video
+                editing assignments.
+              </p>
+            </div>
+
+            <div class="contact-form-panel">
+              <h3 class="card-heading">Send a Message</h3>
+              <p class="card-subtext">
+                Opens a draft addressed to rathoresajal047@gmail.com in your email client.
+              </p>
+
+              <form
+                id="contact-form"
+                class="contact-form"
+                action="mailto:rathoresajal047@gmail.com"
+                method="post"
+                enctype="text/plain"
+              >
+                <div class="form-group">
+                  <label for="sender-name">Full Name</label>
+                  <input
+                    type="text"
+                    id="sender-name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="sender-email">Email Address</label>
+                  <input
+                    type="email"
+                    id="sender-email"
+                    name="email"
+                    placeholder="name@organisation.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="sender-message">Message</label>
+                  <textarea
+                    id="sender-message"
+                    name="message"
+                    rows="4"
+                    placeholder="Share context regarding an opportunity, role, or project..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =======================================================================
+         FOOTER
+         ======================================================================= -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-note">
+          <p>
+            Personal resume of Sajal Rathore, BBA (Digital Business &amp; Entrepreneurship) cohort
+            2026&ndash;2029 at IIM Bangalore.
+          </p>
+        </div>
+
+        <div class="footer-directory">
+          <div class="footer-links-grid">
+            <div class="footer-col">
+              <p class="footer-col-heading">Resume</p>
+              <ul>
+                <li><a href="#hero">Overview</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#beyond-class">Beyond Class</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <p class="footer-col-heading">Strengths</p>
+              <ul>
+                <li><a href="#skills">Visual &amp; Motion</a></li>
+                <li><a href="#skills">Business &amp; Leadership</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#achievements">HelpAge India</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <p class="footer-col-heading">Contact</p>
+              <ul>
+                <li><a href="mailto:rathoresajal047@gmail.com">rathoresajal047@gmail.com</a></li>
+                <li><a href="tel:+919555151912">9555151912</a></li>
+                <li><a href="#contact">Direct Inquiry Form</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            &copy; 2026 Sajal Rathore. All rights reserved.
+          </p>
+          <p class="footer-meta">
+            rathoresajal047@gmail.com &middot; 9555151912
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var THEME_KEY = 'sr-theme';
+        var REVEAL_READY = 'reveal-ready';
+        var REVEAL_VISIBLE = 'is-revealed';
+
+        function applyTheme(theme) {
+          var isDark = theme === 'dark';
+          document.documentElement.classList.toggle('dark', isDark);
+          document.documentElement.dataset.theme = theme;
+
+          var toggleBtn = document.getElementById('theme-toggle');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', String(isDark));
+            toggleBtn.setAttribute(
+              'aria-label',
+              isDark ? 'Switch to light mode' : 'Switch to dark mode'
+            );
+            var labelEl = toggleBtn.querySelector('.theme-toggle-text');
+            if (labelEl) {
+              labelEl.textContent = isDark ? 'Light' : 'Dark';
+            }
+          }
+        }
+
+        function initTheme() {
+          var saved = null;
+          try {
+            saved = window.localStorage.getItem(THEME_KEY);
+          } catch (e) {
+            saved = null;
+          }
+          var prefersDark =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var activeTheme =
+            saved === 'dark' || saved === 'light' ? saved : prefersDark ? 'dark' : 'light';
+
+          applyTheme(activeTheme);
+
+          var toggleBtn = document.getElementById('theme-toggle');
+          if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+              activeTheme = activeTheme === 'dark' ? 'light' : 'dark';
+              applyTheme(activeTheme);
+              try {
+                window.localStorage.setItem(THEME_KEY, activeTheme);
+              } catch (e) {}
+            });
+          }
+
+          var navToggle = document.getElementById('nav-toggle');
+          if (navToggle) {
+            var navLinks = document.querySelectorAll('.site-nav a');
+            navLinks.forEach(function (link) {
+              link.addEventListener('click', function () {
+                navToggle.checked = false;
+              });
+            });
+          }
+        }
+
+        function initActions() {
+          var resumeLink = document.getElementById('resume-print-link');
+          if (resumeLink) {
+            resumeLink.addEventListener('click', function (event) {
+              var href = resumeLink.getAttribute('href') || '';
+              if (href.charAt(0) === '#') {
+                event.preventDefault();
+                window.print();
+              }
+            });
+          }
+
+          var contactForm = document.getElementById('contact-form');
+          var formStatus = document.getElementById('form-status');
+          if (contactForm) {
+            contactForm.addEventListener('submit', function (event) {
+              event.preventDefault();
+              var nameInput = document.getElementById('sender-name');
+              var emailInput = document.getElementById('sender-email');
+              var msgInput = document.getElementById('sender-message');
+              var nameVal = nameInput ? nameInput.value.trim() : '';
+              var emailVal = emailInput ? emailInput.value.trim() : '';
+              var msgVal = msgInput ? msgInput.value.trim() : '';
+
+              var subject = encodeURIComponent(
+                'Inquiry from ' + (nameVal || 'Website Visitor')
+              );
+              var body = encodeURIComponent(
+                'Name: ' + nameVal + '\nEmail: ' + emailVal + '\n\n' + msgVal
+              );
+              window.location.href =
+                'mailto:rathoresajal047@gmail.com?subject=' + subject + '&body=' + body;
+
+              if (formStatus) {
+                formStatus.textContent =
+                  'Email draft prepared for rathoresajal047@gmail.com.';
+              }
+            });
+          }
+        }
+
+        function initSectionReveal() {
+          var sections = Array.prototype.slice.call(
+            document.querySelectorAll('main > section')
+          );
+          if (sections.length === 0) return;
+
+          var reducedMotion =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var hasIO = typeof IntersectionObserver === 'function';
+
+          if (reducedMotion || !hasIO) {
+            sections.forEach(function (section) {
+              section.classList.add(REVEAL_VISIBLE);
+            });
+            return;
+          }
+
+          var viewportHeight =
+            window.innerHeight || document.documentElement.clientHeight || 900;
+
+          sections.forEach(function (section) {
+            var rect = section.getBoundingClientRect();
+            if (section.id === 'hero' || rect.top < viewportHeight * 0.92) {
+              section.classList.add(REVEAL_VISIBLE);
+            }
+          });
+
+          document.documentElement.classList.add(REVEAL_READY);
+
+          var observer = new IntersectionObserver(
+            function (entries, activeObserver) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add(REVEAL_VISIBLE);
+                  activeObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.06, rootMargin: '0px 0px -24px 0px' }
+          );
+
+          sections.forEach(function (section) {
+            if (!section.classList.contains(REVEAL_VISIBLE)) {
+              observer.observe(section);
+            }
+          });
+        }
+
+        function boot() {
+          initTheme();
+          initActions();
+          initSectionReveal();
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', boot);
+        } else {
+          boot();
+        }
+      })();
+    </script>
+  </body>
+</html>
