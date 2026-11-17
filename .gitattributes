@@ -1,6 +1,0 @@
-# Ignore all files by default from GitHub language statistics
-* linguist-vendored
-
-# Explicitly track only HTML and CSS as the repository languages
-*.html linguist-vendored=false linguist-detectable=true
-*.css linguist-vendored=false linguist-detectable=true
