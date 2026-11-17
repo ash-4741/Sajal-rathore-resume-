@@ -15,22 +15,6 @@
     />
     <meta property="og:type" content="website" />
 
-    <!-- Prevent theme flash before stylesheet paints -->
-    <script>
-      (function () {
-        try {
-          var saved = localStorage.getItem('sr-theme');
-          var dark =
-            saved === 'dark' ||
-            (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          if (dark) {
-            document.documentElement.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
-          }
-        } catch (e) {}
-      })();
-    </script>
-
     <!-- Editorial Serif Display (EB Garamond) + Clean Humanist Sans (Figtree) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,12 +33,18 @@
       <div class="container header-shell">
         <a href="#hero" class="nav-brand">Sajal Rathore</a>
 
-        <!-- CSS-only mobile menu toggle -->
+        <!-- CSS-only mobile menu & theme toggles -->
         <input
           type="checkbox"
           id="nav-toggle"
           class="nav-toggle"
           aria-label="Toggle navigation menu"
+        />
+        <input
+          type="checkbox"
+          id="theme-toggle"
+          class="theme-toggle-input"
+          aria-label="Toggle dark mode"
         />
 
         <nav class="site-nav" aria-label="Primary navigation">
@@ -69,13 +59,7 @@
         </nav>
 
         <div class="header-actions">
-          <button
-            type="button"
-            id="theme-toggle"
-            class="theme-toggle"
-            aria-label="Switch to dark mode"
-            aria-pressed="false"
-          >
+          <label for="theme-toggle" class="theme-toggle">
             <svg
               class="theme-icon theme-icon-sun"
               viewBox="0 0 24 24"
@@ -108,8 +92,9 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <span class="theme-toggle-text">Dark</span>
-          </button>
+            <span class="theme-label-dark">Dark</span>
+            <span class="theme-label-light">Light</span>
+          </label>
 
           <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
             <span class="hamburger-line"></span>
@@ -582,7 +567,7 @@
                   <div class="contact-text">
                     <span class="contact-label">Curriculum Vitae</span>
                     <!-- REPLACE: link to your uploaded resume PDF file (e.g. "Sajal-Rathore-Resume.pdf") -->
-                    <a href="#contact" id="resume-print-link">Save / Print Resume (PDF)</a>
+                    <a href="mailto:rathoresajal047@gmail.com?subject=Resume%20Request%20%E2%80%94%20Sajal%20Rathore">Request Resume (PDF)</a>
                   </div>
                 </li>
               </ul>
@@ -600,7 +585,6 @@
               </p>
 
               <form
-                id="contact-form"
                 class="contact-form"
                 action="mailto:rathoresajal047@gmail.com"
                 method="post"
@@ -640,7 +624,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
               </form>
             </div>
           </div>
@@ -703,170 +686,5 @@
         </div>
       </div>
     </footer>
-    <script>
-      (function () {
-        var THEME_KEY = 'sr-theme';
-        var REVEAL_READY = 'reveal-ready';
-        var REVEAL_VISIBLE = 'is-revealed';
-
-        function applyTheme(theme) {
-          var isDark = theme === 'dark';
-          document.documentElement.classList.toggle('dark', isDark);
-          document.documentElement.dataset.theme = theme;
-
-          var toggleBtn = document.getElementById('theme-toggle');
-          if (toggleBtn) {
-            toggleBtn.setAttribute('aria-pressed', String(isDark));
-            toggleBtn.setAttribute(
-              'aria-label',
-              isDark ? 'Switch to light mode' : 'Switch to dark mode'
-            );
-            var labelEl = toggleBtn.querySelector('.theme-toggle-text');
-            if (labelEl) {
-              labelEl.textContent = isDark ? 'Light' : 'Dark';
-            }
-          }
-        }
-
-        function initTheme() {
-          var saved = null;
-          try {
-            saved = window.localStorage.getItem(THEME_KEY);
-          } catch (e) {
-            saved = null;
-          }
-          var prefersDark =
-            typeof window.matchMedia === 'function' &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var activeTheme =
-            saved === 'dark' || saved === 'light' ? saved : prefersDark ? 'dark' : 'light';
-
-          applyTheme(activeTheme);
-
-          var toggleBtn = document.getElementById('theme-toggle');
-          if (toggleBtn) {
-            toggleBtn.addEventListener('click', function () {
-              activeTheme = activeTheme === 'dark' ? 'light' : 'dark';
-              applyTheme(activeTheme);
-              try {
-                window.localStorage.setItem(THEME_KEY, activeTheme);
-              } catch (e) {}
-            });
-          }
-
-          var navToggle = document.getElementById('nav-toggle');
-          if (navToggle) {
-            var navLinks = document.querySelectorAll('.site-nav a');
-            navLinks.forEach(function (link) {
-              link.addEventListener('click', function () {
-                navToggle.checked = false;
-              });
-            });
-          }
-        }
-
-        function initActions() {
-          var resumeLink = document.getElementById('resume-print-link');
-          if (resumeLink) {
-            resumeLink.addEventListener('click', function (event) {
-              var href = resumeLink.getAttribute('href') || '';
-              if (href.charAt(0) === '#') {
-                event.preventDefault();
-                window.print();
-              }
-            });
-          }
-
-          var contactForm = document.getElementById('contact-form');
-          var formStatus = document.getElementById('form-status');
-          if (contactForm) {
-            contactForm.addEventListener('submit', function (event) {
-              event.preventDefault();
-              var nameInput = document.getElementById('sender-name');
-              var emailInput = document.getElementById('sender-email');
-              var msgInput = document.getElementById('sender-message');
-              var nameVal = nameInput ? nameInput.value.trim() : '';
-              var emailVal = emailInput ? emailInput.value.trim() : '';
-              var msgVal = msgInput ? msgInput.value.trim() : '';
-
-              var subject = encodeURIComponent(
-                'Inquiry from ' + (nameVal || 'Website Visitor')
-              );
-              var body = encodeURIComponent(
-                'Name: ' + nameVal + '\nEmail: ' + emailVal + '\n\n' + msgVal
-              );
-              window.location.href =
-                'mailto:rathoresajal047@gmail.com?subject=' + subject + '&body=' + body;
-
-              if (formStatus) {
-                formStatus.textContent =
-                  'Email draft prepared for rathoresajal047@gmail.com.';
-              }
-            });
-          }
-        }
-
-        function initSectionReveal() {
-          var sections = Array.prototype.slice.call(
-            document.querySelectorAll('main > section')
-          );
-          if (sections.length === 0) return;
-
-          var reducedMotion =
-            typeof window.matchMedia === 'function' &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          var hasIO = typeof IntersectionObserver === 'function';
-
-          if (reducedMotion || !hasIO) {
-            sections.forEach(function (section) {
-              section.classList.add(REVEAL_VISIBLE);
-            });
-            return;
-          }
-
-          var viewportHeight =
-            window.innerHeight || document.documentElement.clientHeight || 900;
-
-          sections.forEach(function (section) {
-            var rect = section.getBoundingClientRect();
-            if (section.id === 'hero' || rect.top < viewportHeight * 0.92) {
-              section.classList.add(REVEAL_VISIBLE);
-            }
-          });
-
-          document.documentElement.classList.add(REVEAL_READY);
-
-          var observer = new IntersectionObserver(
-            function (entries, activeObserver) {
-              entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add(REVEAL_VISIBLE);
-                  activeObserver.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.06, rootMargin: '0px 0px -24px 0px' }
-          );
-
-          sections.forEach(function (section) {
-            if (!section.classList.contains(REVEAL_VISIBLE)) {
-              observer.observe(section);
-            }
-          });
-        }
-
-        function boot() {
-          initTheme();
-          initActions();
-          initSectionReveal();
-        }
-
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', boot);
-        } else {
-          boot();
-        }
-      })();
-    </script>
   </body>
 </html>

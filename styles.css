@@ -57,7 +57,7 @@
   --radius-lg: 10px;
 }
 
-html.dark {
+:root:has(#theme-toggle:checked) {
   color-scheme: dark;
 
   --ink: #F3F2ED;
@@ -128,7 +128,7 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-html.dark body {
+:root:has(#theme-toggle:checked) body {
   letter-spacing: 0.004em;
 }
 
@@ -172,7 +172,8 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
-.nav-toggle:focus-visible + .nav-toggle-label {
+.nav-toggle:focus-visible ~ .header-actions .nav-toggle-label,
+.theme-toggle-input:focus-visible ~ .header-actions .theme-toggle {
   outline: 2px solid var(--accent-link);
   outline-offset: 3px;
 }
@@ -343,7 +344,15 @@ footer {
   flex-shrink: 0;
 }
 
-/* Accessible Light / Dark Theme Switcher */
+/* Accessible Pure-CSS Light / Dark Theme Switcher */
+.theme-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -361,6 +370,7 @@ footer {
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
+  user-select: none;
   transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
@@ -370,7 +380,8 @@ footer {
   color: var(--accent-link);
 }
 
-.theme-icon-sun {
+.theme-icon-sun,
+.theme-label-light {
   display: none;
 }
 
@@ -378,11 +389,20 @@ footer {
   display: inline-block;
 }
 
-html.dark .theme-icon-sun {
+.theme-label-dark {
+  display: inline;
+}
+
+:root:has(#theme-toggle:checked) .theme-icon-sun {
   display: inline-block;
 }
 
-html.dark .theme-icon-moon {
+:root:has(#theme-toggle:checked) .theme-label-light {
+  display: inline;
+}
+
+:root:has(#theme-toggle:checked) .theme-icon-moon,
+:root:has(#theme-toggle:checked) .theme-label-dark {
   display: none;
 }
 
@@ -1086,16 +1106,6 @@ html.dark .theme-icon-moon {
   box-shadow: var(--card-shadow-hover);
 }
 
-.form-status {
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--accent-link);
-}
-
-.form-status:empty {
-  display: none;
-}
-
 /* ==========================================================================
    7. COMPONENTS (Class Selectors for Reusable UI Blocks)
    ========================================================================== */
@@ -1452,20 +1462,6 @@ html.dark .theme-icon-moon {
     animation: hero-enter 0.58s cubic-bezier(0.16, 1, 0.3, 1) 0.23s both;
   }
 
-  html.reveal-ready main > section:where(:not(#hero)) {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-  }
-
-  html.reveal-ready main > section.is-revealed {
-    opacity: 1;
-    transform: translateY(0);
-    will-change: auto;
-  }
-
   @supports (animation-timeline: scroll()) {
     .scroll-progress {
       animation: scroll-progress-bar linear both;
@@ -1474,10 +1470,10 @@ html.dark .theme-icon-moon {
   }
 
   @supports (animation-timeline: view()) {
-    .section-header .section-title {
+    main > section:not(#hero) {
       animation: section-fade-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 34%;
+      animation-range: entry 0% cover 22%;
     }
 
     #education .timeline::before {
@@ -1485,14 +1481,6 @@ html.dark .theme-icon-moon {
       animation-timeline: view();
       animation-range: entry 5% cover 45%;
     }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.reveal-ready main > section:where(:not(#hero)) {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }
 
